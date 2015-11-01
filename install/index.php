@@ -171,7 +171,7 @@ class DATABASE_CONFIG {
 }";
                 fwrite($dbFile, $databaseStructure);
                 fclose($dbFile);
-                $sql = file_get_contents("ExtazCMS-Reloaded.sql");
+                $sql = file_get_contents("ExtazCMS.sql");
                 $pdo->exec($sql);
                 echo $alert->success("Votre base de données a bien été installée, supprimer le fichier /install/");
                 $done = true;
