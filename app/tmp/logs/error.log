@@ -1,0 +1,18 @@
+2015-11-01 05:12:57 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/themes/default/default.php
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-01 05:12:57 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/default/default.css
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
