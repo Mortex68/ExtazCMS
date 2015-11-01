@@ -1,11 +1,6 @@
-# CakePHP 2
 /app/tmp/*
 /vendors/*
-
-
-### Composer ###
 composer.phar
-
 vendor/
 /.idea/
 /.git/
