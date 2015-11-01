@@ -16,9 +16,6 @@ V1.10 ("White Dwarf") - 18 Octobre 2015
 
 V1.9 ("Nebula") - 31 Août 2015
 ----
-Voici la liste d'idée proposé pour le CMS pour la V2... http://strawpoll.me/5361404 Votez pour celle que vous préférer!
-
-Ceci n'est pas une mise à jour majeur.
 * Ajouté page "Chat en jeu" désactivante/activante 
 * Ajouté l'option de désactiver/activer StarPass
 * Supprimé du code / fichiers inutile.
