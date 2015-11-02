@@ -1,6 +1,8 @@
 /app/tmp/*
-/vendors/*
+/app/tmp/cache
+/app/tmp/logs
 composer.phar
+/vendors/*
 vendor/
-/.idea/
-/.git/
+/.idea
+/.git
