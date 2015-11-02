@@ -38,7 +38,7 @@ class AppController extends Controller {
 
 	public $viewClass = 'TwigView.Twig';
 	public $ext = '.twig';
-	public $uses = ['Informations', 'User', 'starpassHistory', 'Support', 'donationLadder', 'Button', 'Cpage', 'Widget'];
+	public $uses = ['Informations', 'User', 'Permissions', 'starpassHistory', 'Support', 'donationLadder', 'Button', 'Cpage', 'Widget'];
 	public $helpers = ['Html', 'Form', 'PaypalIpn.Paypal'];
 	public $components = [
 		'Session',
@@ -117,7 +117,8 @@ class AppController extends Controller {
 		$this->username = $this->Auth->user('username');
 		$this->set('email', $this->Auth->user('email'));
 		$this->avatar = $this->Auth->user('avatar');
-		if($this->Auth->user()){
+
+		if($this->Auth->user()) {
 			$user_informations = $this->User->find('first', ['conditions' => ['User.id' => $this->Auth->user('id')]]);
 			$this->set('avatar', $user_informations['User']['avatar']);
 			$this->set('tokens', $user_informations['User']['tokens']);
@@ -210,6 +211,16 @@ class AppController extends Controller {
 		Configure::write('Config.language', 'fra');
 		$this->Auth->allow();
 	}
+
+    public function hasPermission($permission) {
+        $permissions = $this->Permissions->find('all', ['conditions' => ['uid' => $this->Auth->user('id')]]);
+
+        if($permissions[0]["Permissions"]["$permission"] == 1) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 
 	function afterPaypalNotification($txnId){
 		$informations = $this->Informations->find('first');
