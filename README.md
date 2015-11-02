@@ -1,4 +1,4 @@
-![logo 1](https://d1ro8r1rbfn3jf.cloudfront.net/ms_84270/J1UDlHzBaC5hk69udVqtSN4eQShkjp/2015-10-18%2B16-38-41.png?Expires=1446485461&Signature=PbpS5ChMuLrivHX6~BvSHwfH-r~L6UTE94swRymAiPlaeUHZo-2b4oR2W8-yyKl2e6ZFRvd0Q~vwgaTxQyukhk1gRcqHnUvrEJQ1-~jP5BflznnFNEb0sA94YTQ3S1i8RdrtQV7FIF5H~8cvJjxRxm3umCbcCZtyvPd~P8u--kgAOF7P~d60JUkZhFpXX~hCWvfu5AXnfU3Vb-39061zT6jbBHduUwzNBYffLdtw5IosQepa3Ni1BizSMBOqyuNgOhcycd6S97BoSExQmBTi3-ewzxW3P2FrNpLQDH3MeptbHdObHszKzir8O8yVVEsVn20BkmJNQJLILbhekPyGfw__&Key-Pair-Id=APKAJHEJJBIZWFB73RSA)
+![logo 1](https://monosnap.com/file/q1iVunXW1QUZtXPru5nVfSZds0vIxJ.png)
 ![logo 2](http://forum.ironcraft.fr/uploads/monthly_2015_10/logo.png.d3dc9bbe6e06f0f094bcad42af1dd7c0.png)
 ##L'équipe
 * __TristanCode__ - Développeur en Chef et Dirigeant. 
