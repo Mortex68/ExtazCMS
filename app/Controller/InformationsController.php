@@ -58,12 +58,6 @@ class InformationsController extends AppController{
 				else{
 					$this->Informations->saveField('use_slider', 0);
 				}
-				if(isset($this->request->data['use_captcha'])){
-					$this->Informations->saveField('use_captcha', 1);
-				}
-				else{
-					$this->Informations->saveField('use_captcha', 0);
-				}
 				if(isset($this->request->data['use_store'])){
 					$this->Informations->saveField('use_store', 1);
 				}
