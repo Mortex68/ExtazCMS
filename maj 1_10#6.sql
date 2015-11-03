@@ -1,5 +1,7 @@
 ALTER TABLE `extaz_informations` ADD `use_faq` INT NULL;
-ALTER TABLE `extaz_team`ADD `dname` VARCHAR(255) NULL AFTER `id`;
+ALTER TABLE `extaz_informations` ADD `use_starpass` INT NULL;
+ALTER TABLE `extaz_informations` ADD `use_igchat` INT NULL;
+ALTER TABLE `extaz_team` ADD `dname` VARCHAR(255) NULL AFTER `id`;
 
 
 CREATE TABLE IF NOT EXISTS `extaz_faqs` (
@@ -8,7 +10,6 @@ CREATE TABLE IF NOT EXISTS `extaz_faqs` (
   `answer` text
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `extaz_votes`;
 CREATE TABLE IF NOT EXISTS `extaz_votes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
