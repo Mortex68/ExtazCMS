@@ -61,7 +61,7 @@ class AppController extends Controller {
 		// On déclare JSONAPI
 		$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
 		// On transmet les données
-		$this->set('xml', 					simplexml_load_file("../Language/fr/fr.xml"));
+		$this->set('xml', 					simplexml_load_file(ROOT . "/app/Language/fr/fr.xml"));
 		$this->set('api', 					$api);
 		$this->set('use_igchat',         	$this->config['use_igchat']);
 		$this->set('use_starpass',          $this->config['use_starpass']);
