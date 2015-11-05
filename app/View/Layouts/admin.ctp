@@ -112,7 +112,7 @@
                         <li>
                             <a href="<?php echo $this->Html->url(['controller' => 'faq', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-question-circle"></i> <span class="nav-label">F.A.Q</span></a>
                         </li>
-                        <? } ?>
+                        <?php } ?>
                         <?php if($use_store == 1){ ?>
                             <li>
                                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Boutique</span><span class="fa arrow"></span></a>
