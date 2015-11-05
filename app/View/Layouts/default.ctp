@@ -7,35 +7,34 @@
     <title><?php echo $name_server. " &raquo; " .$this->fetch('title'); ?> </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site web du serveur <?= $name_server; ?>, propulsé par ExtazCMS Reloaded">
+    <meta name="description" content="Site web du serveur <?= $name_server; ?>, propulsé par ExtazCMS">
     <meta name="author" content="TristanCode">
-    <link rel="stylesheet" type="text/css" href="/css/themes/default/default.php">
     <?php
-    // Favicon
-    echo $this->Html->meta('favicon.png', $logo_url, array('type' => 'icon'));
+        // Favicon
+        echo $this->Html->meta('favicon.png', $logo_url, array('type' => 'icon'));
 
-    // CSS Global Compulsory
-    echo $this->Html->css('/files/bootstrap/css/bootstrap.min');
-    echo $this->Html->css('style');
-    echo $this->Html->css('404');
-    echo $this->Html->css('blog');
-    echo $this->Html->css('profile');
-    echo $this->Html->css('timeline');
-    echo $this->Html->css('summernote');
+        // CSS Global Compulsory
+        echo $this->Html->css('/files/bootstrap/css/bootstrap.min');
+        echo $this->Html->css('style');
+        echo $this->Html->css('404');
+        echo $this->Html->css('blog');
+        echo $this->Html->css('profile');
+        echo $this->Html->css('timeline');
+        echo $this->Html->css('summernote');
 
-    // CSS Implementing Plugins
-    echo $this->Html->css('/files/line-icons/line-icons');
-    echo $this->Html->css('/files/flexslider/flexslider');
-    echo $this->Html->css('/files/parallax-slider/css/parallax-slider');
-    echo $this->Html->css('/files/sky-forms/css/custom-sky-forms');
-    echo $this->Html->css('dropzone');
+        // CSS Implementing Plugins
+        echo $this->Html->css('/files/line-icons/line-icons');
+        echo $this->Html->css('/files/flexslider/flexslider');
+        echo $this->Html->css('/files/parallax-slider/css/parallax-slider');
+        echo $this->Html->css('/files/sky-forms/css/custom-sky-forms');
+        echo $this->Html->css('dropzone');
 
-    // CSS Theme
-    echo $this->Html->css('default/default');
-    echo $this->Html->css('flatty');
+        // CSS Theme
+        echo $this->Html->css('themes/default');
+        echo $this->Html->css('flatty');
 
-    // CSS Customization
-    echo $this->Html->css('custom');
+        // CSS Customization
+        echo $this->Html->css('custom');
     ?>
     <link href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -210,26 +209,25 @@
         <!--=== End Footer ===-->
     </div><!--/wrapper-->
     <?php
-    // JS Global Compulsory
-    echo $this->Html->script('/files/bootstrap/js/bootstrap.min');
+        // JS Global Compulsory
+        echo $this->Html->script('/files/bootstrap/js/bootstrap.min');
 
-    // JS Implementing Plugins
-    // echo $this->Html->script('/files/back-to-top');
-    echo $this->Html->script('/files/flexslider/jquery.flexslider-min');
-    echo $this->Html->script('/files/parallax-slider/js/modernizr');
-    echo $this->Html->script('/files/parallax-slider/js/jquery.cslider');
-    echo $this->Html->script('dropzone');
+        // JS Implementing Plugins
+        echo $this->Html->script('/files/flexslider/jquery.flexslider-min');
+        echo $this->Html->script('/files/parallax-slider/js/modernizr');
+        echo $this->Html->script('/files/parallax-slider/js/jquery.cslider');
+        echo $this->Html->script('dropzone');
 
-    // JS Page Level
-    echo $this->Html->script('app');
-    echo $this->Html->script('jquery.confirm');
-    echo $this->Html->script('jquery.bootstrap-growl');
-    echo $this->Html->script('index');
-    echo $this->Html->script('jquery.autocomplete');
-    echo $this->Html->script('summernote');
-    echo $this->Html->script('summernote-fr-FR');
-    echo $this->Html->script('humane');
-    echo $this->Html->script('custom');
+        // JS Page Level
+        echo $this->Html->script('app');
+        echo $this->Html->script('jquery.confirm');
+        echo $this->Html->script('jquery.bootstrap-growl');
+        echo $this->Html->script('index');
+        echo $this->Html->script('jquery.autocomplete');
+        echo $this->Html->script('summernote');
+        echo $this->Html->script('summernote-fr-FR');
+        echo $this->Html->script('humane');
+        echo $this->Html->script('custom');
     ?>
     <script type="text/javascript">
         jQuery(document).ready(function(){
