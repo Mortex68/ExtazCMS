@@ -1,18 +1,36 @@
-2015-11-01 05:12:57 Error: [MissingControllerException] Controller class CssController could not be found.
+2015-11-04 21:56:55 Error: [MissingControllerException] Controller class MuieblackcatController could not be found.
 Exception Attributes: array (
-  'class' => 'CssController',
+  'class' => 'MuieblackcatController',
   'plugin' => NULL,
 )
-Request URL: /css/themes/default/default.php
+Request URL: /muieblackcat
 Stack Trace:
 #0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
-2015-11-01 05:12:57 Error: [MissingControllerException] Controller class CssController could not be found.
+2015-11-04 21:56:57 Error: [MissingControllerException] Controller class PmaController could not be found.
 Exception Attributes: array (
-  'class' => 'CssController',
+  'class' => 'PmaController',
   'plugin' => NULL,
 )
-Request URL: /css/default/default.css
+Request URL: //pma/scripts/setup.php
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-04 21:56:58 Error: [MissingControllerException] Controller class MyadminController could not be found.
+Exception Attributes: array (
+  'class' => 'MyadminController',
+  'plugin' => NULL,
+)
+Request URL: //myadmin/scripts/setup.php
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-04 21:56:59 Error: [MissingControllerException] Controller class MyAdminController could not be found.
+Exception Attributes: array (
+  'class' => 'MyAdminController',
+  'plugin' => NULL,
+)
+Request URL: //MyAdmin/scripts/setup.php
 Stack Trace:
 #0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
