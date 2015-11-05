@@ -69,8 +69,8 @@ $(document).ready(function(){
                                 <?php } ?>
                             </div>
                             <hr>
-                            <button class="btn btn-w-m btn-primary pull-right" type="submit"><i class="fa fa-check"></i> Confirmer la modification</button>
-                            <a href="<?php echo $this->Html->url(['controller' => 'users', 'action' => 'delete', $data['User']['id']]); ?>" class="btn btn-danger confirm"><i class="fa fa-trash-o"></i> Supprimer ce compte</a>
+                            <button class="btn btn-w-m btn-sm btn-primary pull-right" type="submit"><i class="fa fa-check"></i> Confirmer la modification</button>
+                            <a href="<?php echo $this->Html->url(['controller' => 'users', 'action' => 'delete', $data['User']['id']]); ?>" class="btn btn-sm btn-danger confirm"><i class="fa fa-trash-o"></i> Supprimer ce compte</a>
                         <?php echo $this->Form->end(); ?>
                     </div>
                 </div>
@@ -145,6 +145,76 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+        <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Permissions</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="<?php echo $this->Html->url(['controller' => 'users', 'action' => 'all']); ?>">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <p>
+                        <?php echo $this->Form->create('Users', ['controller' => 'users', 'action' => 'edit_permissions']);
+                        $informations = [
+                            'Admin (TOUTES PEMISSIONS)'  => 'admin',
+                            'Ajouter un Utilisateur'     => 'add_user',
+                            'Modifier un Utilisateur'    => 'edit_user',
+                            'Supprimer un Utilisateur'   => 'del_user',
+                            'Ajouter un Code'            => 'add_code',
+                            'Supprimer un Code'          => 'del_code',
+                            'Ajouter une Page'           => 'add_page',
+                            'Modifier une Page'          => 'edit_page',
+                            'Supprimer une Page'         => 'del_page',
+                            'Ajouter une Actualités'     => 'add_news',
+                            'Modifier une Actualités'    => 'edit_news',
+                            'Supprimer une Actualités'   => 'del_news',
+                            'Ajouter au FAQ'             => 'add_faq',
+                            'Supprimer du FAQ'           => 'del_faq',
+                            'Modifier un Commentaire'    => 'edit_comment',
+                            'Supprimer un Commentaire'   => 'del_comment',
+                        ];
+                        $nb = 0;
+                        ?>
+                        <input name="id" type="hidden" value="<?= $data_p["Permissions"]["uid"]; ?>" />
+                        <?
+                        foreach($informations as $k => $v){
+                        $nb++;
+                        ?>
+                    <div class="form-group">
+                        <b><?= $k; ?> ?</b>
+                        <div class="sw-red margin-right-15 pull-left">
+                            <div class="onoffswitch"><input name="<?php echo $v; ?>" type="checkbox" class="checkboxes onoffswitch-checkbox" <?php if($data_p["Permissions"][$v] == 1) echo 'checked="checked"'; ?> id="onoffswitch<?php echo $nb; ?>">
+                                <label for="onoffswitch<?php echo $nb; ?>" class="onoffswitch-label">
+                                    <div class="onoffswitch-inner"></div>
+                                    <div class="onoffswitch-switch"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+                            <button class="btn btn-w-m btn-primary pull-right" type="submit"><i class="fa fa-check"></i> Confirmer les modifications</button>
+                        </div>
+                    </div>
+                    <?php echo $this->Form->end(); ?>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
 </div>

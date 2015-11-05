@@ -4,7 +4,7 @@ App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController{
 
-    public $uses = ['User', 'Informations', 'donationLadder', 'Support', 'supportComments', 'Shop', 'Vote', 'Code', 'shopHistory', 'starpassHistory', 'paypalHistory', 'sendTokensHistory'];
+    public $uses = ['User', 'Informations', 'Permissions', 'donationLadder', 'Support', 'supportComments', 'Shop', 'Vote', 'Code', 'shopHistory', 'starpassHistory', 'paypalHistory', 'sendTokensHistory'];
 
 	public function beforeFilter(){
 	    parent::beforeFilter();
@@ -221,12 +221,33 @@ class UsersController extends AppController{
         }
     }
 
+    public function admin_edit_permissions() {
+        if($this->Auth->user('role') > 1) {
+            //Permissions
+            if($this->request->is('post')){
+                $this->Permissions->id = $this->request->data('id');
+
+                if(isset($this->request->data['admin'])){
+                    $this->Permissions->saveField('admin', 1);
+                }
+                else {
+                    $this->Permissions->saveField('admin', 0);
+                }
+                $this->Session->setFlash('Permissions mises à jour !', 'toastr_success');
+                return $this->redirect(['controller' => 'users', 'action' => 'edit', 'admin' => TRUE]);
+            }
+        }
+    }
+
     public function admin_edit($id = null){
         if($this->Auth->user('role') > 1){
             $this->User->id = $id;
             if($this->User->exists()){
                 $this->set('items', $this->Shop->find('all'));
                 $this->set('data', $this->User->find('first', ['conditions' => ['User.id' => $id]]));
+                $this->set('data_p', $this->Permissions->find('first', ['conditions' => ['uid' => $id]]));
+
+
                 if($this->request->is('post')){
                     $this->User->id = $id;
                     if($this->User->save($this->request->data, ['validate' => false])){
