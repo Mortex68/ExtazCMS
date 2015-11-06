@@ -3,6 +3,6 @@
 /app/tmp/logs
 composer.phar
 /vendors/*
-vendor/
+/vendor
 /.idea
 /.git
