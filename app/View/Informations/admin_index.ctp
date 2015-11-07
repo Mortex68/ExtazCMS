@@ -172,34 +172,33 @@ $(document).ready(function(){
                             <div class="panel-body">
                                 <?php echo $this->Form->create('Informations', ['action' => 'update_options']); ?>
                                     <?php
-                                    $informations = [
-                                        'Activer le slider' => 'use_slider',
-                                        'Activer les captchas' => 'use_captcha',
-                                        'Utiliser le système de vote' => 'use_votes',
-                                        'Afficher la page chat' => 'use_igchat',
-                                        'Afficher la page équipe' => 'use_team',
-                                        'Afficher la page de contact' => 'use_contact',
-                                        'Afficher la page du règlement' => 'use_rules',
-                                        'Activer la boutique' => 'use_store',
-                                        'Afficher les nombre de vues sur les actualités' => 'use_posts_views',
-                                        'Activer le module "meilleur donateur"' => 'use_donation_ladder',
-                                        'Activer le module "meilleur voteur"' => 'use_votes_ladder',
-                                        'Activer le paiement via StarPass' => 'use_starpass',
-                                        'Activer le paiement via PayPal' => 'use_paypal',
-                                        'Votre serveur utilise-t-il un système d\'économie' => 'use_economy',
-                                        'Voulez vous autoriser le paiement via la monnaie du serveur dans la boutique' => 'use_server_money',
-                                        'Happy hour activée' => 'happy_hour',
-                                        'Maintenance activé' => 'maintenance'
-                                    ];
-                                    $nb = 0;
-                                    foreach($informations as $k => $v){
+                                        $informations = [
+                                            'Activer le slider' => 'use_slider',
+                                            'Activer le FAQ' => 'use_faq',
+                                            'Utiliser le système de vote' => 'use_votes',
+                                            'Afficher la page chat' => 'use_igchat',
+                                            'Afficher la page équipe' => 'use_team',
+                                            'Afficher la page de contact' => 'use_contact',
+                                            'Afficher la page du règlement' => 'use_rules',
+                                            'Activer la boutique' => 'use_store',
+                                            'Afficher les nombre de vues sur les actualités' => 'use_posts_views',
+                                            'Activer le module "meilleur donateur"' => 'use_donation_ladder',
+                                            'Activer le module "meilleur voteur"' => 'use_votes_ladder',
+                                            'Activer le paiement via StarPass' => 'use_starpass',
+                                            'Activer le paiement via PayPal' => 'use_paypal',
+                                            'Votre serveur utilise-t-il un système d\'économie' => 'use_economy',
+                                            'Voulez vous autoriser le paiement via la monnaie du serveur dans la boutique' => 'use_server_money',
+                                            'Happy hour activée' => 'happy_hour',
+                                            'Maintenance activé' => 'maintenance'
+                                        ];
+                                        $nb = 0;
+                                        foreach($informations as $k => $v){
                                         $nb++;
                                         ?>
-
                                         <div class="form-group">
                                             <b><?= $k; ?> ?</b>
                                             <div class="sw-red margin-right-15 pull-left">
-                                                <div class="onoffswitch"><input name="<?php echo $v; ?>" type="checkbox" class="checkboxes onoffswitch-checkbox" <?php if($data_p[$v] == 1) echo 'checked="checked"'; ?> id="onoffswitch<?php echo $nb; ?>">
+                                                <div class="onoffswitch"><input name="<?php echo $v; ?>" type="checkbox" class="checkboxes onoffswitch-checkbox" <?php if($data['Informations'][$v] == 1) echo 'checked="checked"'; ?> id="onoffswitch<?php echo $nb; ?>">
                                                     <label for="onoffswitch<?php echo $nb; ?>" class="onoffswitch-label">
                                                         <div class="onoffswitch-inner"></div>
                                                         <div class="onoffswitch-switch"></div>
@@ -207,7 +206,7 @@ $(document).ready(function(){
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php
+                                            <?php
                                     }
                                     ?>
                                     <div class="row">

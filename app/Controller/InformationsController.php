@@ -64,6 +64,12 @@ class InformationsController extends AppController{
 				else{
 					$this->Informations->saveField('use_store', 0);
 				}
+				if(isset($this->request->data['use_faq'])){
+					$this->Informations->saveField('use_faq', 1);
+				}
+				else{
+					$this->Informations->saveField('use_faq', 0);
+				}
 				if(isset($this->request->data['use_donation_ladder'])){
 					$this->Informations->saveField('use_donation_ladder', 1);
 				}
