@@ -34,5 +34,4 @@
 * Fixé le bug Argent Minecraft
 * Fixé le bug Options Admin
 
-ExtazCMS par TristanCode
-Copyright 2015 Clyese-Systems
+`ExtazCMS © 2015 Clyese Systems - Tous droits réservés.`
