@@ -77,9 +77,6 @@ class UsersController extends AppController{
                             $this->Session->setFlash('Les mots de passe ne correspondent pas', 'error');
                         }
                     }
-                    else{
-                        $this->Session->setFlash('Captcha incorrect', 'error');
-                    }
                 }
             }
 
@@ -223,7 +220,6 @@ class UsersController extends AppController{
 
     public function admin_edit_permissions() {
         if($this->Auth->user('role') > 1) {
-            //Permissions
             if($this->request->is('post')){
                 $this->Permissions->id = $this->request->data('id');
 
