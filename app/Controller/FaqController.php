@@ -24,7 +24,6 @@ Class FaqController extends AppController {
                         $this->Session->setFlash('Les champs sont trop courts!', 'toastr_error');
                     } else {
                         $this->Faq->create;
-                        $this->Faq->saveField('user_id', $this->Auth->user('id'));
                         $this->Faq->saveField('question', $this->request->data['Faq']['question']);
                         $this->Faq->saveField('answer', $this->request->data['Faq']['answer']);
                         $this->Session->setFlash('La requête a bien été envoyée!', 'toastr_success');
