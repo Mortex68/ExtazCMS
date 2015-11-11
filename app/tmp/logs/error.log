@@ -93,3 +93,21 @@ Stack Trace:
 #3 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/lib/Cake/Core/App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-11-08 21:42:41 Error: [MissingControllerException] Controller class Apple-touch-icon-precomposed.pngController could not be found.
+Exception Attributes: array (
+  'class' => 'Apple-touch-icon-precomposed.pngController',
+  'plugin' => NULL,
+)
+Request URL: /apple-touch-icon-precomposed.png
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-08 21:42:42 Error: [MissingControllerException] Controller class Apple-touch-icon.pngController could not be found.
+Exception Attributes: array (
+  'class' => 'Apple-touch-icon.pngController',
+  'plugin' => NULL,
+)
+Request URL: /apple-touch-icon.png
+Stack Trace:
+#0 /Users/tristanhonorowski/Documents/workspace/My Websites (2)/Extaz-CMS/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
