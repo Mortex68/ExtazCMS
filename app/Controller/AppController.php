@@ -177,13 +177,6 @@ class AppController extends Controller {
 		// Pages customs
 		$this->set('cpages', $this->Cpage->find('all'));
 		$this->set('nb_cpages', $this->Cpage->find('count'));
-		// ExtazCMS
-		$version = 2;
-		$last_version = 2;
-		$this->version = $version;
-		$this->last_version = $last_version;
-		$this->set('version', $version);
-		$this->set('last_version', $last_version);
 		// Si JSONAPI est injoignable
 		if($api->call('server.bukkit.version')[0]['result'] != 'success'){
 			if($this->request->url == 'boutique'){

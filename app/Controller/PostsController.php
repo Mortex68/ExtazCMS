@@ -1,7 +1,7 @@
 <?php
 class PostsController extends AppController{
 
-	public $uses = ['Post', 'Informations', 'Like', 'Comment', 'postView'];
+	public $uses = ['Post', 'Informations', 'Like', 'Comment'];
 
 	var $paginate = array(
 		'Post' => array(
