@@ -94,7 +94,6 @@ class AppController extends Controller {
 		$this->set('use_slider',            $this->config['use_slider']);
 		$this->set('use_votes',             $this->config['use_votes']);
 		$this->set('use_votes_ladder',      $this->config['use_votes_ladder']);
-		$this->set('use_posts_views',       $this->config['use_posts_views']);
 		$this->set('happy_hour',            $this->config['happy_hour']);
 		$this->set('happy_hour_bonus',      $this->config['happy_hour_bonus']);
 		$this->set('rules',                 $this->config['rules']);

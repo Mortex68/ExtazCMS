@@ -53,17 +53,6 @@ class PostsController extends AppController{
 				throw new NotFoundException();
 			}
 		}
-		// Les visionnages
-		$ip = $_SERVER['REMOTE_ADDR'];
-		$seen = $this->postView->find('first', ['conditions' => ['postView.post_id' => $id, 'postView.ip' => $ip]]);
-		// Si l'utilisateur n'a jamais vu cette actu, on l'ajoute
-		if(empty($seen)){
-			$this->postView->create;
-			$this->postView->saveField('post_id', $id);
-			$this->postView->saveField('ip', $ip);
-		}
-		// On envoie le nombre de visionnages à la vue
-		$this->set('views', $this->postView->find('count', ['conditions' => ['postView.post_id' => $id]]));
 	}
 
 	public function admin_add(){
@@ -189,7 +178,6 @@ class PostsController extends AppController{
 			// On va chercher les brouillons
 			$this->set('data', $this->Post->find('all', array('conditions' => array('Post.visible' => 1), 'order' => array('Post.created' => 'DESC'))));
 			$this->set('likes', $this->Like->find('all'));
-			$this->set('views', $this->postView->find('all'));
 		}
 		// Si c'est un utilisateur
 		else{

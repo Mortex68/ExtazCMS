@@ -1,6 +1,9 @@
 --
 -- ExtazCMS 1.11
 --
+DROP TABLE `extaz_posts_views`;
+ALTER TABLE `extaz_informations` DROP `use_posts_views`;
+
 TRUNCATE TABLE `extaz_faqs`;
 ALTER TABLE `extaz_faqs` ADD PRIMARY KEY (`id`);
 ALTER TABLE `extaz_faqs` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
