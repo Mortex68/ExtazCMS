@@ -1,6 +1,9 @@
 --
 -- ExtazCMS - 1.8
 --
+ALTER TABLE `extaz_informations` ADD `use_votes` INT NOT NULL AFTER `use_contact`;
+UPDATE `extaz_informations` SET `use_votes` = '1' WHERE `extaz_informations`.`id` = 1;
+
 CREATE TABLE IF NOT EXISTS `extaz_votes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -11,8 +14,6 @@ CREATE TABLE IF NOT EXISTS `extaz_votes` (
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-ALTER TABLE `extaz_informations` ADD `use_votes` INT NOT NULL AFTER `use_contact`;
-UPDATE `extaz_informations` SET `use_votes` = '1' WHERE `extaz_informations`.`id` = 1;
 
 CREATE TABLE IF NOT EXISTS `extaz_posts_views` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
