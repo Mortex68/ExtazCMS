@@ -1,5 +1,5 @@
 --
--- ExtazCMS 1.10#6
+-- ExtazCMS 1.11
 --
 DROP TABLE `extaz_posts_views`;
 ALTER TABLE `extaz_informations` DROP `use_posts_views`;
