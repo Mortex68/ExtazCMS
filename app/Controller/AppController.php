@@ -50,7 +50,7 @@ class AppController extends Controller {
 
 	public function beforeFilter(){
 		if(version_compare(PHP_VERSION, '5.4.0') < 0){
-    		exit('Vous devez avoir PHP 5.4 minimum pour utiliser ExtazCMS'); // Merci MTC ^_^
+    		exit('Vous devez avoir PHP 5.4 minimum pour utiliser ExtazCMS');
 		}
 
 		if((isset($this->params['prefix']) && ($this->params['prefix'] == 'admin'))){
@@ -60,7 +60,16 @@ class AppController extends Controller {
 		$this->config = $this->Informations->find('first')['Informations'];
 		// On déclare JSONAPI
 		$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
+
 		// On transmet les données
+		// ExtazCMS
+		$version = file_get_contents(ROOT . "/app/Config/version.php");
+		$last_version = file_get_contents("http://extaz-cms.fr/version.txt");
+		$this->version = $version;
+		$this->last_version = $last_version;
+
+		$this->set('version', 				$version);
+		$this->set('last_version', 			$last_version);
 		$this->set('xml', 					simplexml_load_file(ROOT . "/app/Language/fr/fr.xml"));
 		$this->set('api', 					$api);
 		$this->set('use_igchat',         	$this->config['use_igchat']);
