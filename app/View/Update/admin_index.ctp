@@ -5,8 +5,6 @@
  * Created: 10/30/15 at 8:58 PM
  */
     $this->assign('title', 'Mettre à jour');
-    $cms_version         = Configure::read('cms.version');
-    $cms_current_version = Configure::read('cms.current_version');
 ?>
 <div class="wrapper wrapper-content">
     <div class="animated fadeInRightBig">

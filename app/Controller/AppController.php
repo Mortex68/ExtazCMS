@@ -39,7 +39,7 @@ class AppController extends Controller {
 	public $viewClass = 'TwigView.Twig';
 	public $ext = '.twig';
 	public $uses = ['Informations', 'User', 'Permissions', 'starpassHistory', 'Support', 'donationLadder', 'Button', 'Cpage', 'Widget'];
-	public $helpers = ['Html', 'Form', 'PaypalIpn.Paypal'];
+	public $helpers = ['Html', 'Form', 'PaypalIpn.Paypal', 'Session'];
 	public $components = [
 		'Session',
 		'Auth' => [
@@ -64,7 +64,7 @@ class AppController extends Controller {
 		// On transmet les données
 		// ExtazCMS
 		$version = file_get_contents(ROOT . "/app/Config/version.php");
-		$last_version = file_get_contents("http://extaz-cms.fr/version.txt");
+		$last_version = file_get_contents("http://extaz-cms.fr/cms/version.txt");
 		$this->version = $version;
 		$this->last_version = $last_version;
 
