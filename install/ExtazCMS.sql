@@ -1,3 +1,12 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:3333
+-- Generation Time: Nov 30, 2015 at 05:30 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -5,39 +14,7 @@ SET time_zone = "+00:00";
 -- Database: `extaz`
 --
 
-DROP TABLE IF EXISTS `extaz_votes`;
-CREATE TABLE IF NOT EXISTS `extaz_votes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `ip` text NOT NULL,
-  `reward` int(11) NOT NULL,
-  `next_vote` text NOT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
 -- --------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `extaz_permissions` (
-  `id` int(11) NOT NULL,
-  `uid` int(10) unsigned NOT NULL,
-  `admin` int(11) NOT NULL DEFAULT '0',
-  `add_user` int(11) NOT NULL DEFAULT '0',
-  `edit_user` int(11) NOT NULL DEFAULT '0',
-  `del_user` int(11) NOT NULL DEFAULT '0',
-  `add_code` int(11) NOT NULL DEFAULT '0',
-  `del_code` int(11) NOT NULL DEFAULT '0',
-  `add_page` int(11) NOT NULL DEFAULT '0',
-  `edit_page` int(11) NOT NULL DEFAULT '0',
-  `del_page` int(11) NOT NULL DEFAULT '0',
-  `add_news` int(11) NOT NULL DEFAULT '0',
-  `edit_news` int(11) NOT NULL DEFAULT '0',
-  `del_news` int(11) NOT NULL DEFAULT '0',
-  `add_faq` int(11) NOT NULL DEFAULT '0',
-  `del_faq` int(11) NOT NULL DEFAULT '0',
-  `edit_comment` int(11) NOT NULL DEFAULT '0',
-  `del_comment` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `extaz_buttons`
@@ -46,14 +23,14 @@ CREATE TABLE IF NOT EXISTS `extaz_permissions` (
 CREATE TABLE `extaz_buttons` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `content` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `icon` varchar(255) NOT NULL,
-  `color` varchar(255) NOT NULL,
+  `content` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `url` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `icon` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `color` varchar(255) CHARACTER SET latin1 NOT NULL,
   `order` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,14 +41,20 @@ CREATE TABLE `extaz_buttons` (
 CREATE TABLE `extaz_codes` (
   `id` int(11) NOT NULL,
   `creator` text NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
   `ip` text NOT NULL,
   `code` text NOT NULL,
   `value` int(11) DEFAULT NULL,
   `used` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `extaz_codes`
+--
+
+INSERT INTO `extaz_codes` (`id`, `creator`, `ip`, `code`, `value`, `used`, `created`, `updated`) VALUES
+  (1, 'tristancode', '::1', 'YCLR-JAX4-6PUL-4BDO', 1, 0, '2015-11-26 01:17:43', '2015-11-26 01:17:43');
 
 -- --------------------------------------------------------
 
@@ -86,7 +69,14 @@ CREATE TABLE `extaz_comments` (
   `ip` text NOT NULL,
   `comment` text NOT NULL,
   `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `extaz_comments`
+--
+
+INSERT INTO `extaz_comments` (`id`, `post_id`, `user_id`, `ip`, `comment`, `created`) VALUES
+  (1, 1, 1, '::1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2015-11-03 23:17:19');
 
 -- --------------------------------------------------------
 
@@ -170,10 +160,8 @@ CREATE TABLE `extaz_informations` (
   `use_rules` int(11) DEFAULT NULL,
   `use_donation_ladder` int(11) DEFAULT NULL,
   `use_slider` int(11) DEFAULT NULL,
-  `use_captcha` int(11) DEFAULT NULL,
   `use_votes` int(11) DEFAULT NULL,
   `use_votes_ladder` int(11) DEFAULT NULL,
-  `use_posts_views` int(11) DEFAULT NULL,
   `use_igchat` int(11) DEFAULT NULL,
   `happy_hour` int(11) DEFAULT NULL,
   `happy_hour_bonus` int(11) DEFAULT NULL,
@@ -183,7 +171,6 @@ CREATE TABLE `extaz_informations` (
   `chat_nb_messages` int(11) DEFAULT NULL,
   `analytics` text,
   `maintenance` int(11) DEFAULT NULL,
-  `send_tokens_loss_rate` int(11) DEFAULT NULL,
   `votes_url` text,
   `votes_description` varchar(255) NOT NULL,
   `votes_time` int(11) DEFAULT NULL,
@@ -199,8 +186,8 @@ CREATE TABLE `extaz_informations` (
 -- Dumping data for table `extaz_informations`
 --
 
-INSERT INTO `extaz_informations` (`id`, `debug`, `name_server`, `ip_server`, `port_server`, `money_server`, `jsonapi_ip`, `jsonapi_port`, `jsonapi_username`, `jsonapi_password`, `jsonapi_salt`, `site_money`, `starpass_idp`, `starpass_idd`, `starpass_tokens`, `paypal_price`, `paypal_tokens`, `paypal_email`, `contact_email`, `logo_url`, `use_store`, `use_paypal`, `use_starpass`, `use_economy`, `use_server_money`, `use_team`, `use_contact`, `use_rules`, `use_donation_ladder`, `use_slider`, `use_captcha`, `use_votes`, `use_votes_ladder`, `use_posts_views`, `use_igchat`, `happy_hour`, `happy_hour_bonus`, `rules`, `background`, `chat_prefix`, `chat_nb_messages`, `analytics`, `maintenance`, `send_tokens_loss_rate`, `votes_url`, `votes_description`, `votes_time`, `votes_reward`, `votes_command`, `votes_ladder_limit`, `customs_buttons_title`, `theme_color_main`, `use_faq`) VALUES
-  (1, 0, 'ExtazCMS', 'www.extaz-cms.fr', NULL, 'euros', '', NULL, NULL, NULL, NULL, 'tokens', NULL, NULL, 25, 3, 25, '', '', 'https://drslash.com/wp-content/uploads/2014/06/grandmaster-1.png', 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, '', '3.jpg', 'Web', 30, '', 0, 0, '', 'Votez pour notre serveur !', 0, 0, '', 15, 0, '#00000', 1);
+INSERT INTO `extaz_informations` (`id`, `debug`, `name_server`, `ip_server`, `port_server`, `money_server`, `jsonapi_ip`, `jsonapi_port`, `jsonapi_username`, `jsonapi_password`, `jsonapi_salt`, `site_money`, `starpass_idp`, `starpass_idd`, `starpass_tokens`, `paypal_price`, `paypal_tokens`, `paypal_email`, `contact_email`, `logo_url`, `use_store`, `use_paypal`, `use_starpass`, `use_economy`, `use_server_money`, `use_team`, `use_contact`, `use_rules`, `use_donation_ladder`, `use_slider`, `use_votes`, `use_votes_ladder`, `use_igchat`, `happy_hour`, `happy_hour_bonus`, `rules`, `background`, `chat_prefix`, `chat_nb_messages`, `analytics`, `maintenance`, `votes_url`, `votes_description`, `votes_time`, `votes_reward`, `votes_command`, `votes_ladder_limit`, `customs_buttons_title`, `theme_color_main`, `use_faq`) VALUES
+  (1, 0, 'ExtazCMS', 'www.extaz-cms.fr', 25565, 'tokens', 'localhost', 20059, 'admin', 'changeme', '', 'euros', NULL, NULL, 25, 3, 25, '', 'tristancode@extaz-cms.fr', 'file:///Users/tristanhonorowski/Documents/Pictures/grandmaster-1.png', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 75, '', '2.jpg', 'Web', 1, '', 0, '', 'Votez pour notre serveur !', 0, 0, '', 15, 0, '#00000', 1);
 
 -- --------------------------------------------------------
 
@@ -311,7 +298,14 @@ CREATE TABLE `extaz_likes` (
   `ip` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `extaz_likes`
+--
+
+INSERT INTO `extaz_likes` (`id`, `id_article`, `ip`, `username`, `created`) VALUES
+  (1, 1, '::1', 'Undefined', '2015-11-22 18:10:48');
 
 -- --------------------------------------------------------
 
@@ -371,19 +365,6 @@ INSERT INTO `extaz_posts` (`id`, `cat`, `title`, `slug`, `content`, `img`, `auth
 -- --------------------------------------------------------
 
 --
--- Table structure for table `extaz_posts_views`
---
-
-CREATE TABLE `extaz_posts_views` (
-  `id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `ip` text NOT NULL,
-  `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `extaz_send_tokens_history`
 --
 
@@ -419,7 +400,14 @@ CREATE TABLE `extaz_shop` (
   `command` text,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `extaz_shop`
+--
+
+INSERT INTO `extaz_shop` (`id`, `name`, `description`, `cat`, `img`, `visible`, `promo`, `required`, `required_name`, `price_money_site`, `price_money_server`, `command`, `created`, `updated`) VALUES
+  (1, 'VIP', 'Grade VIP', '0', 'https://drslash.com/wp-content/uploads/2014/06/grandmaster-1.png', 1, 15, '-1', 'Aucun', 150, -1, 'op %player%', '2015-11-24 21:28:45', '2015-11-24 21:28:45');
 
 -- --------------------------------------------------------
 
@@ -521,6 +509,33 @@ CREATE TABLE `extaz_team` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `extaz_updates`
+--
+
+CREATE TABLE `extaz_updates` (
+  `id` int(11) NOT NULL,
+  `updater` text NOT NULL,
+  `ip` text NOT NULL,
+  `name` text NOT NULL,
+  `version` text NOT NULL,
+  `type` text NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `extaz_updates`
+--
+
+INSERT INTO `extaz_updates` (`id`, `updater`, `ip`, `name`, `version`, `type`, `created`) VALUES
+  (1, 'MrSaooty', '::1', '', '1.8', 'NORMAL', '2015-08-12 12:12:00'),
+  (2, 'tristancode', '::1', 'Nebula', '1.9', 'NORMAL', '2015-08-31 19:33:00'),
+  (3, 'tristancode', '::1', 'White Dwarf', '1.10', 'NORMAL', '2015-10-18 08:35:00'),
+  (4, 'tristancode', '::1', 'White Dwarf', '1.10#6', 'PATCH', '2015-10-18 14:24:00'),
+  (5, 'tristancode', '::1', 'Addendum', '1.11', 'NORMAL', '2015-12-01 12:25:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `extaz_users`
 --
 
@@ -529,13 +544,29 @@ CREATE TABLE `extaz_users` (
   `username` varchar(50) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) NOT NULL,
   `avatar` text,
   `tokens` int(11) DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
-  `allow_email` int(11) DEFAULT NULL,
   `votes` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extaz_votes`
+--
+
+CREATE TABLE `extaz_votes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ip` text NOT NULL,
+  `reward` int(11) NOT NULL,
+  `next_vote` text NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -591,6 +622,12 @@ ALTER TABLE `extaz_donation_ladder`
 ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `extaz_faqs`
+--
+ALTER TABLE `extaz_faqs`
+ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `extaz_informations`
 --
 ALTER TABLE `extaz_informations`
@@ -618,12 +655,6 @@ ADD PRIMARY KEY (`id`);
 -- Indexes for table `extaz_posts`
 --
 ALTER TABLE `extaz_posts`
-ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `extaz_posts_views`
---
-ALTER TABLE `extaz_posts_views`
 ADD PRIMARY KEY (`id`);
 
 --
@@ -657,12 +688,6 @@ ALTER TABLE `extaz_starpass_history`
 ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `extaz_support`
---
-ALTER TABLE `extaz_support`
-ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `extaz_support_comments`
 --
 ALTER TABLE `extaz_support_comments`
@@ -675,9 +700,21 @@ ALTER TABLE `extaz_team`
 ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `extaz_updates`
+--
+ALTER TABLE `extaz_updates`
+ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `extaz_users`
 --
 ALTER TABLE `extaz_users`
+ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `extaz_votes`
+--
+ALTER TABLE `extaz_votes`
 ADD PRIMARY KEY (`id`);
 
 --
@@ -699,12 +736,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `extaz_codes`
 --
 ALTER TABLE `extaz_codes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `extaz_comments`
 --
 ALTER TABLE `extaz_comments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `extaz_cpages`
 --
@@ -716,20 +753,20 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `extaz_donation_ladder`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `extaz_faqs`
+--
+ALTER TABLE `extaz_faqs`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `extaz_likes`
 --
 ALTER TABLE `extaz_likes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `extaz_posts`
 --
 ALTER TABLE `extaz_posts`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `extaz_posts_views`
---
-ALTER TABLE `extaz_posts_views`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `extaz_send_tokens_history`
 --
@@ -739,7 +776,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `extaz_shop`
 --
 ALTER TABLE `extaz_shop`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `extaz_shop_categories`
 --
@@ -756,11 +793,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `extaz_starpass_history`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `extaz_support`
---
-ALTER TABLE `extaz_support`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `extaz_support_comments`
 --
 ALTER TABLE `extaz_support_comments`
@@ -771,10 +803,20 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `extaz_team`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `extaz_updates`
+--
+ALTER TABLE `extaz_updates`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `extaz_users`
 --
 ALTER TABLE `extaz_users`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `extaz_votes`
+--
+ALTER TABLE `extaz_votes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `extaz_widgets`
 --
