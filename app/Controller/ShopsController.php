@@ -1,5 +1,5 @@
 <?php
-Class ShopsController extends AppController{
+class ShopsController extends AppController {
 
 	public $uses = ['Shop', 'User', 'Informations', 'starpassHistory', 'shopHistory', 'donationLadder', 'shopCategories'];
 
@@ -30,7 +30,7 @@ Class ShopsController extends AppController{
 		}
 	}
 
-	public function promo(){
+	public function promo() {
 		// Si la boutique est activée
 		if($this->config['use_store'] == 1){
 			// Pagination
@@ -145,7 +145,7 @@ Class ShopsController extends AppController{
 		}
 	}
 
-	public function search(){
+	public function search() {
 		$min = 3; // Nombre de carac minimum
 		$max = 40; // Nombre de carac maximum
 		// Si une recherche a été effectuée
@@ -170,7 +170,7 @@ Class ShopsController extends AppController{
 		}
 	}
 
-	public function starpass(){
+	public function starpass() {
 		if($this->Auth->user()){
 			if($this->request->is('post')){
 				// Déclaration des variables

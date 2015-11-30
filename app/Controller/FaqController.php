@@ -1,5 +1,5 @@
 <?php
-Class FaqController extends AppController {
+class FaqController extends AppController {
     public $uses = ['Faq'];
 
     public function index() {

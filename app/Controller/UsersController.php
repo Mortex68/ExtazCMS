@@ -4,7 +4,7 @@ App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController{
 
-    public $uses = ['User', 'Informations', 'Permissions', 'donationLadder', 'Support', 'supportComments', 'Shop', 'Vote', 'Code', 'shopHistory', 'starpassHistory', 'paypalHistory', 'sendTokensHistory'];
+    public $uses = ['User', 'Informations', 'donationLadder', 'Support', 'supportComments', 'Shop', 'Vote', 'Code', 'shopHistory', 'starpassHistory', 'paypalHistory', 'sendTokensHistory'];
 
 	public function beforeFilter(){
 	    parent::beforeFilter();
@@ -19,6 +19,12 @@ class UsersController extends AppController{
         if(!$this->Auth->user()){
             if($this->request->is('post')){
                 if($this->Auth->login()){
+                    //If the user does not have an IP, we add it!
+                    if(empty($this->Auth->user('ip'))) {
+                        $id = $this->Auth->user('id');
+                        $this->User->id = $id;
+                        $this->User->saveField('ip', $_SERVER["REMOTE_ADDR"]);
+                    }
                     $this->Session->setFlash('Vous êtes maintenant connecté '.$this->Auth->user('username').'', 'success');
                     return $this->redirect($this->Auth->redirect(['controller' => 'posts', 'action' => 'index']));
                 }
@@ -39,7 +45,7 @@ class UsersController extends AppController{
 	}
 
     public function signup(){
-        if($this->Auth->loggedIn()){
+        if($this->Auth->user()){
             $this->redirect($this->Auth->redirect(['controller' => 'posts', 'action' => 'index']));
         }
         else{
@@ -54,12 +60,12 @@ class UsersController extends AppController{
                                 if($this->User->save($this->request->data)){
                                     $avatar = 'http://cravatar.eu/helmavatar/'.$this->request->data['User']['username'];
                                     $this->User->saveField('avatar', $avatar);
+                                    $this->User->saveField('ip', $_SERVER['REMOTE_ADDR']);
                                     $this->User->saveField('tokens', '0');
                                     $this->User->saveField('allow_email', '1');
                                     if($nb_account == 0){
                                         $this->User->saveField('role', '2');
-                                    }
-                                    else{
+                                    } else {
                                         $this->User->saveField('role', '0');
                                     }
                                     $this->Session->setFlash('Inscription réussie vous pouvez maintenant vous connecter', 'success');
@@ -218,30 +224,12 @@ class UsersController extends AppController{
         }
     }
 
-    public function admin_edit_permissions() {
-        if($this->Auth->user('role') > 1) {
-            if($this->request->is('post')){
-                $this->Permissions->id = $this->request->data('id');
-
-                if(isset($this->request->data['admin'])){
-                    $this->Permissions->saveField('admin', 1);
-                }
-                else {
-                    $this->Permissions->saveField('admin', 0);
-                }
-                $this->Session->setFlash('Permissions mises à jour !', 'toastr_success');
-                return $this->redirect(['controller' => 'users', 'action' => 'edit', 'admin' => TRUE]);
-            }
-        }
-    }
-
     public function admin_edit($id = null){
         if($this->Auth->user('role') > 1){
             $this->User->id = $id;
             if($this->User->exists()){
                 $this->set('items', $this->Shop->find('all'));
                 $this->set('data', $this->User->find('first', ['conditions' => ['User.id' => $id]]));
-                $this->set('data_p', $this->Permissions->find('first', ['conditions' => ['uid' => $id]]));
 
 
                 if($this->request->is('post')){

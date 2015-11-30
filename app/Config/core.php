@@ -386,13 +386,3 @@ Cache::config('_cake_model_', array(
 	'duration' => $duration
 ));
 
-/**
- * NE PAS CHANGER !!!
- */
-Configure::write(
-	'cms',
-	array(
-		'version' => file_get_contents(ROOT."/app/Config/version.php"),
-		'current_version' => file_get_contents("http://extaz-cms.fr/version.txt"),
-	)
-);

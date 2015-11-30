@@ -6,7 +6,7 @@
         <meta name="keywords" content="ExtazCMS">
         <meta name="author" content="TristanCode">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $this->fetch('title'); ?></title>
+        <title>ExtazCMS <?php echo $version; ?> - <?php echo $this->fetch('title'); ?></title>
         <?php echo $this->Html->meta('favicon.png', $logo_url, array('type' => 'icon')); ?>
         <?php echo $this->Html->css('admin/bootstrap.min'); ?>
         <?php echo $this->Html->css('/files/font-awesome/css/font-awesome'); ?>
@@ -21,8 +21,8 @@
         <?php echo $this->Html->css('admin/jquery.selectBoxIt'); ?>
         <?php echo $this->Html->css('admin/custom'); ?>
         <?php echo $this->Html->css('custom'); ?>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+        <?php echo $this->Html->script('admin/jquery-2.1.1'); ?>
+        <?php echo $this->Html->script('admin/jquery-ui-1.10.4.min'); ?>
         <script src="http://code.highcharts.com/highcharts.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <?php echo $this->Html->script('jquery.counterup'); ?>
@@ -85,6 +85,9 @@
                     <?php if($role > 1){ ?>
                         <li>
                             <a href="<?php echo $this->Html->url(['controller' => 'informations', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-wrench"></i> <span class="nav-label">Configuration</span></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->Html->url(['controller' => 'update', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-wrench"></i> <span class="nav-label">Mettre à jour</span></a>
                         </li>
                         <li>
                             <a href="<?php echo $this->Html->url(['controller' => 'users', 'action' => 'all', 'admin' => true]); ?>"><i class="fa fa-users"></i> <span class="nav-label">Utilisateurs</span></a>

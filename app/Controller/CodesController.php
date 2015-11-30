@@ -24,7 +24,6 @@ Class CodesController extends AppController{
 	public function admin_generate(){
 		if($this->request->is('post')){
 			$creator = $this->Auth->user('username');
-			$user_id = 0;
 			$ip = $_SERVER['REMOTE_ADDR'];
 			$value = $this->request->data['Codes']['value'];
 			$number = $this->request->data['Codes']['number'];
@@ -47,7 +46,6 @@ Class CodesController extends AppController{
 					// On l'enregistre
 					$this->Code->create;
 					$this->Code->saveField('creator', $creator);
-					$this->Code->saveField('user_id', $user_id);
 					$this->Code->saveField('ip', $ip);
 					$this->Code->saveField('code', $code);
 					$this->Code->saveField('value', $value);

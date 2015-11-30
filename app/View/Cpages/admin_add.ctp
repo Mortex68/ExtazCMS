@@ -66,12 +66,6 @@ $(document).ready(function(){
                                     <?php echo $this->Form->textarea('content', array('type' => 'textarea', 'rows' => '5', 'cols' => '5', 'class' => 'ckeditor', 'label' => false)); ?>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <i class="fa fa-info-circle"></i> Vous pouvez utiliser des variables pour étoffer le contenu de votre page. <a href="http://extaz-cms.com/wiki/index.php?title=Aide#Pages_personnalis.C3.A9es" target="_blank">(<u>en savoir plus</u> <i class="fa fa-external-link"></i>)</a>
-                                    <button class="btn btn-w-m btn-primary pull-right pull-right" type="submit"><i class="fa fa-plus"></i> Ajouter cette page</button>
-                                </div>
-                            </div>
                         <?php echo $this->Form->end(); ?>
                     </div>
                 </div>

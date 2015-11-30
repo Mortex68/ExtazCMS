@@ -5,6 +5,15 @@ $(document).ready(function(){
         showFirstOption: false
     });
 });
+
+//var cmd = $("#ShopCommand");
+//cmd.on("keyup", function (event) {
+//    var val = $.trim(cmd.val());
+//    if(val.match(/&&&/g)) {
+//        event.val.replace("/&&&/g", "");
+//            $("#commands").append('<br><div class="input-group margin-bottom-20"><span class="input-group-addon"><i class="fa fa-code"></i></span><input name="data[Shop][command]" placeholder="Votre commande" class="form-control" type="text" id="ShopCommand" required="required"/></div>');
+//    }
+//});
 </script>
 <div class="wrapper wrapper-content">
     <div class="animated fadeInRightBig">
@@ -112,6 +121,7 @@ $(document).ready(function(){
                                     <span class="input-group-addon"><i class="fa fa-code"></i></span>
                                     <?php echo $this->Form->input('command', array('type' => 'text', 'value' => $data['Shop']['command'], 'class' => 'form-control', 'label' => false, 'div' => false)); ?>
                                 </div>
+                                <div id="commands"></div>
                                 <small>Commande(s) sans le slash (/) initial. Utilisez %player% pour désigner un joueur et &&& pour ajouter une nouvelle commande</small>
                             </div>
                             <div class="row">

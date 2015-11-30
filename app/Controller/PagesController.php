@@ -255,26 +255,21 @@ class PagesController extends AppController {
 	}
 
 	public function admin_chat_update(){
-		if($this->Auth->user('role') > 0){
 			if($this->request->is('ajax')){
     			$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
 				$data = '<i class="fa fa-clock-o"></i> Dernière mise à jour à '.date('H:i:s').', il y a '.$api->call('players.online.count')[0]['success'].' joueur(s) connecté(s)';
 				echo json_encode($data);
 				exit();
 			}
-		}
-		else{
-			throw new NotFoundException();
-		}
-	}
+    }
 
 	public function admin_chat_messages(){
-		if($this->Auth->user('role') > 0){
+		if($this->Auth->user()){
 			if($this->request->is('ajax')){
 				$data = '';
     			$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
-				$messages = $api->call('streams.chat.latest', [$this->config['chat_nb_messages']])[0]['success'];
-				if(count($messages) >= $this->config['chat_nb_messages']){
+				$messages = $api->call('streams.chat.latest', [100])[0]['success'];
+				if(count($messages) >= 1){
 					foreach($messages as $m){
 						if(empty($m['player'])){
 							$explode = explode(']', $m['message']);
@@ -296,13 +291,10 @@ class PagesController extends AppController {
 				exit();
 			}
 		}
-		else{
-			throw new NotFoundException();
-		}
 	}
 
 	public function admin_send_message(){
-		if($this->Auth->user('role') > 0){
+		if($this->Auth->user()) {
 			if($this->request->is('ajax')){
 	    		$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
 				$message = trim(str_replace('/', '', $this->request->data['message']));
@@ -325,9 +317,6 @@ class PagesController extends AppController {
 				exit();
 				
 			}
-		}
-		else{
-			throw new NotFoundException();
 		}
 	}
 

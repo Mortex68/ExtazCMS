@@ -101,7 +101,7 @@ Class VotesController extends AppController{
 
 		// Si on n'est pas connecté
 		}
-		else{
+		else {
 			$this->Session->setFlash('Vous devez être connecté pour accéder à cette page', 'error');
 			return $this->redirect(['controller' => 'users', 'action' => 'login']);
 		}

@@ -19,7 +19,7 @@ $alert = new Alert();
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Installation de ExtazCMS 1.10</title>
+    <title>Installation de ExtazCMS 1.11</title>
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -59,7 +59,7 @@ $alert = new Alert();
 <div class="ui fixed inverted menu">
     <div class="ui container">
         <div href="#" class="header item">
-            ExtazCMS 1.10
+            ExtazCMS 1.11
         </div>
     </div>
 </div>

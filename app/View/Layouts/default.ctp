@@ -15,12 +15,16 @@
 
         // CSS Global Compulsory
         echo $this->Html->css('/files/bootstrap/css/bootstrap.min');
+        echo $this->Html->css('/files/font-awesome/css/font-awesome.min');
         echo $this->Html->css('style');
         echo $this->Html->css('404');
         echo $this->Html->css('blog');
         echo $this->Html->css('profile');
         echo $this->Html->css('timeline');
         echo $this->Html->css('summernote');
+
+        //JS
+        echo $this->Html->script('admin/jquery-2.1.1');
 
         // CSS Implementing Plugins
         echo $this->Html->css('/files/line-icons/line-icons');
@@ -37,10 +41,14 @@
         echo $this->Html->css('custom');
     ?>
     <link href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.0/isotope.pkgd.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-</head>	
+</head>
+<?php
+if(isset($_GET['debug'])) {
+    echo "Version $version";
+    exit();
+}
+?>
 <body cz-shortcut-listen="true" class="boxed-layout container" background="<?php echo $this->webroot.'img/bg/'.$background; ?>">
     <div class="wrapper">
         <!--Header-->    

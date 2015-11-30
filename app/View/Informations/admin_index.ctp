@@ -111,9 +111,14 @@ $(document).ready(function(){
                                         <div class="col-md-12">
                                             <hr>
                                             <button class="btn btn-w-m btn-primary pull-right" type="submit"><i class="fa fa-check"></i> Confirmer les modifications</button>
+
+                                <?php echo $this->Form->end(); ?>
+                                <?php echo $this->Form->create('Informations', ['action' => 'reset_votes']); ?>
+                                    <button class="btn btn-w-m btn-primary btn-sm pull-left" type="submit"><i class="fa fa-times"></i> Reset les votes</button><br><br> <small>Attention, ceci ne peut pas être défait!</small>
+                                <?php echo $this->Form->end(); ?>
                                         </div>
                                     </div>
-                                <?php echo $this->Form->end(); ?>
+
                             </div>
                         </div>
                         <div id="tab-3" class="tab-pane">
@@ -181,7 +186,6 @@ $(document).ready(function(){
                                             'Afficher la page de contact' => 'use_contact',
                                             'Afficher la page du règlement' => 'use_rules',
                                             'Activer la boutique' => 'use_store',
-                                            'Afficher les nombre de vues sur les actualités' => 'use_posts_views',
                                             'Activer le module "meilleur donateur"' => 'use_donation_ladder',
                                             'Activer le module "meilleur voteur"' => 'use_votes_ladder',
                                             'Activer le paiement via StarPass' => 'use_starpass',

@@ -29,14 +29,31 @@ class InformationsController extends AppController{
 		}
 	}
 
+
+	public function admin_reset_votes() {
+		if ($this->Auth->user('role') > 1) {
+			if($this->request->is('post')) {
+                $db = ConnectionManager::getDataSource('default');
+                $db->rawQuery("UPDATE extaz_users SET votes = '0'");
+
+                $this->Session->setFlash('Les votes on été remis à zero !', 'toastr_success');
+                return $this->redirect(['controller' => 'informations', 'action' => 'index']);
+            }
+
+		} else {
+			throw new NotFoundException();
+		}
+		exit();
+        //$this->autoRender = false;
+    }
+
 	public function admin_test_jsonapi(){
 		if($this->Auth->user('role') > 1){
 			if($this->request->is('ajax')){
 		    	$api = new JSONAPI($this->request->data['ip'], $this->request->data['port'], $this->request->data['username'], $this->request->data['password'], $this->request->data['salt']);
 				if($api->call('players.online.limit')[0]['result'] == 'success'){
 					$result = 'success';
-				}
-				else{
+				} else {
 					$result = 'failure';
 				}
 				echo json_encode(['result' => $result]);

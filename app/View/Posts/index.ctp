@@ -143,12 +143,6 @@ $(document).ready(function(){
                             <div class="by-author">
                                 <strong><?php echo $articles[$a]['Post']['author']; ?></strong>
                                 <span>
-                                    <?php if($use_posts_views == 1){ ?>
-	                                    le <?php echo $this->Time->format('d/m/Y à H:i', $articles[$a]['Post']['posted']); ?>
-	                                    <a href="<?php echo $this->Html->url(array('controller' => 'posts', 'action' => 'read', 'slug' => $articles[$a]['Post']['slug'], 'id' => $articles[$a]['Post']['id'])); ?>" class="btn btn-default btn-xs">
-	                                        <i class="fa fa-eye"></i> <?php echo count($articles[$a]['postView']); ?>
-	                                    </a>
-                                    <?php } ?>
                                     <a href="<?php echo $this->Html->url(array('controller' => 'posts', 'action' => 'read', 'slug' => $articles[$a]['Post']['slug'], 'id' => $articles[$a]['Post']['id'])); ?>" class="btn btn-default btn-xs">
                                         <i class="fa fa-heart"></i> <?php echo count($articles[$a]['Like']); ?>
                                     </a>

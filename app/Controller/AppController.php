@@ -38,7 +38,7 @@ class AppController extends Controller {
 
 	public $viewClass = 'TwigView.Twig';
 	public $ext = '.twig';
-	public $uses = ['Informations', 'User', 'Permissions', 'starpassHistory', 'Support', 'donationLadder', 'Button', 'Cpage', 'Widget'];
+	public $uses = ['Informations', 'User', 'starpassHistory', 'Support', 'donationLadder', 'Button', 'Cpage', 'Widget'];
 	public $helpers = ['Html', 'Form', 'PaypalIpn.Paypal', 'Session'];
 	public $components = [
 		'Session',
@@ -48,7 +48,7 @@ class AppController extends Controller {
 		]
 	];
 
-	public function beforeFilter(){
+	public function beforeFilter() {
 		if(version_compare(PHP_VERSION, '5.4.0') < 0){
     		exit('Vous devez avoir PHP 5.4 minimum pour utiliser ExtazCMS');
 		}
@@ -58,17 +58,21 @@ class AppController extends Controller {
 		}
 		// Variable qui regroupe toutes les infos depuis la bdd 
 		$this->config = $this->Informations->find('first')['Informations'];
+
 		// On déclare JSONAPI
 		$api = new JSONAPI($this->config['jsonapi_ip'], $this->config['jsonapi_port'], $this->config['jsonapi_username'], $this->config['jsonapi_password'], $this->config['jsonapi_salt']);
 
 		// On transmet les données
 		// ExtazCMS
-		$version = file_get_contents(ROOT . "/app/Config/version.php");
-		$last_version = file_get_contents("http://extaz-cms.fr/cms/version.txt");
+		$version = file_get_contents(ROOT . "/app/Config/version.txt");
+		$next_version = file_get_contents(ROOT . "/app/Config/nversion.txt");
+		$last_version = "1.11"; //file_get_contents("http://extaz-cms.fr/cms/version.txt");
 		$this->version = $version;
+		$this->next_version = $version;
 		$this->last_version = $last_version;
 
 		$this->set('version', 				$version);
+		$this->set('next_version', 			$next_version);
 		$this->set('last_version', 			$last_version);
 		$this->set('xml', 					simplexml_load_file(ROOT . "/app/Language/fr/fr.xml"));
 		$this->set('api', 					$api);
@@ -213,15 +217,6 @@ class AppController extends Controller {
 		$this->Auth->allow();
 	}
 
-    public function hasPermission($permission) {
-        $permissions = $this->Permissions->find('all', ['conditions' => ['uid' => $this->Auth->user('id')]]);
-
-        if($permissions[0]["Permissions"]["$permission"] == 1) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    }
 
 	function afterPaypalNotification($txnId){
 		$informations = $this->Informations->find('first');

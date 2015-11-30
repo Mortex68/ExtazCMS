@@ -101,7 +101,7 @@ $(document).ready(function(){
 						<hr>
 						<div class="chat-messages">
 							<?php
-							$messages = $api->call('streams.chat.latest', [$chat_nb_messages])[0]['success'];
+							$messages = $api->call('streams.chat.latest', [100])[0]['success'];
 							if(count($messages) >= $chat_nb_messages){
 								foreach($messages as $m){
 									if(empty($m['player'])){

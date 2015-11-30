@@ -12,13 +12,11 @@ $(document).ready(function($){
         <div class="row">
             <div class="col-md-6">
             <?php
-            $cms_version         = Configure::read('cms.version');
-            $cms_current_version = Configure::read('cms.current_version');
 
-            if($cms_version == $cms_current_version) {
-                    echo "<div class='alert alert-info'>Votre CMS est à jour!</div>";
+            if($version == $last_version) {
+                    echo "<div class='alert alert-info'>Votre CMS est à jour! Version : {$version}</div>";
                 } else {
-                    echo "<div class='alert alert-danger'>Votre CMS n'est plus à jour! Télécharger la dernière version {$cms_current_version}<br><br><a href='/admin/update/' class='btn btn-sm btn-danger r'><i class='fa fa-wrench'></i> Mettre à jour</a></div>";
+                    echo "<div class='alert alert-danger'>Votre CMS n'est plus à jour! Télécharger la dernière version {$last_version}<br><br><a href='/admin/update/' class='btn btn-sm btn-danger r'><i class='fa fa-wrench'></i> Mettre à jour</a></div>";
                 }
             ?>
             </div>

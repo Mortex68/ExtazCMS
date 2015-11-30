@@ -116,11 +116,11 @@ $(document).ready(function(){
                                 <td>
                                     <select name="forma" class="select" onchange="location = this.options[this.selectedIndex].value;">
                                         <option>Que faire ?</option>
-                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'kick', $p['name']]); ?>" data-text='<i class="fa fa-bolt"></i> Kick'></option>
-                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'clear', $p['name']]); ?>" data-text='<i class="fa fa-trash"></i> Clear'></option>
-                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'ban', $p['name']]); ?>" data-text='<i class="fa fa-ban"></i> Ban'></option>
-                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'banip', $p['name']]); ?>" data-text='<i class="fa fa-globe"></i> Ban IP'></option>
-                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'whois', $p['name']]); ?>" data-text='<i class="fa fa-info-circle"></i> Whois ?'></option>
+                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'kick', $p['name']]); ?>" data-text='<i class="fa fa-bolt"></i> Kick'><i class="fa fa-bolt"></i> Kick</option>
+                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'clear', $p['name']]); ?>" data-text='<i class="fa fa-trash"></i> Clear'><i class="fa fa-trash"></i> Clear</option>
+                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'ban', $p['name']]); ?>" data-text='<i class="fa fa-ban"></i> Ban'><i class="fa fa-ban"></i> Ban</option>
+                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'banip', $p['name']]); ?>" data-text='<i class="fa fa-globe"></i> Ban IP'><i class="fa fa-globe"></i> Ban IP</option>
+                                        <option value="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'whois', $p['name']]); ?>" data-text='<i class="fa fa-info-circle"></i> Whois ?'><i class="fa fa-info-circle"></i> Whois ?</option>
                                     </select>
                                 </td>
                             </tr>

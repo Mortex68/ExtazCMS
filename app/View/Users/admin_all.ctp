@@ -59,6 +59,7 @@ $(document).ready(function(){
                             <th><b>#</b></th>
                             <th><b>Pseudo</b></th>
                             <th><b>eMail</b></th>
+                            <th><b>IP</b></th>
                             <th><b>Tokens</b></th>
                             <th><b>Role</b></th>
                             <th><b>Inscrit le</b></th>
@@ -71,6 +72,7 @@ $(document).ready(function(){
                                 <td><?php echo $d['User']['id']; ?></td>
                                 <td><?php echo $this->Html->image($d['User']['avatar'], ['height' => 16, 'width' => 16, 'class' => 'avatar']).' '.$d['User']['username']; ?></td>
                                 <td><?php echo $d['User']['email']; ?></td>
+                                <td><?php echo $d['User']['ip']; ?></td>
                                 <td><?php echo $d['User']['tokens']; ?></td>
                                 <?php if($d['User']['role'] == 2){ ?>
                                     <td><span class="label label-danger">Administrateur</span></td>
