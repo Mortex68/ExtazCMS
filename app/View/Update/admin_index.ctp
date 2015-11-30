@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
+                        <?php echo file_get_contents(ROOT . "/app/Config/changelog.html"); ?>
                      </div>
                 </div>
             </div>
