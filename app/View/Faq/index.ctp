@@ -1,4 +1,4 @@
-<?php $this->assign('title', 'F.A.Q'); ?>
+<?php $this->assign('title', 'F.A.Q.'); ?>
 <!--=== Content Part ===-->
 <div class="container content">
     <div class="row">
